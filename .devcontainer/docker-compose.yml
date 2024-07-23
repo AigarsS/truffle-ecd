@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: rails
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: development
+  web:
+    build: .
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    depends_on:
+      - db
+volumes:
+  db-data:
