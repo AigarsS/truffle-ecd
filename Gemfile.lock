@@ -101,6 +101,8 @@ GEM
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    graphql (2.3.10)
+      base64
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -230,6 +232,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  graphql (~> 2.3)
   jbuilder
   pg (~> 1.1)
   pry
