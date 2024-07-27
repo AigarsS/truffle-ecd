@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fx: 9.99
+  fy: 9.99
+  fz: 9.99
+  mx: 9.99
+  my: 9.99
+  mz: 9.99
+  primitive_types_node: one
+
+two:
+  fx: 9.99
+  fy: 9.99
+  fz: 9.99
+  mx: 9.99
+  my: 9.99
+  mz: 9.99
+  primitive_types_node: two

@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+first_node = PrimitiveTypes::Node.find_or_create_by!(name: "First node")
+Coordinates::Point.find_or_create_by!(node: first_node, x: 0, y: 0, z: 0)
+
+second_node = PrimitiveTypes::Node.find_or_create_by!(name: "Second node")
+Coordinates::Point.find_or_create_by!(node: second_node, x: 1000, y: 1000, z: 1000)
