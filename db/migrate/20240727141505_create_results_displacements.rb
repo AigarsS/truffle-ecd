@@ -7,7 +7,7 @@ class CreateResultsDisplacements < ActiveRecord::Migration[7.1]
       t.decimal :rx
       t.decimal :ry
       t.decimal :rz
-      t.references :primitive_types_node, null: false, foreign_key: true
+      t.references :node, null: false, foreign_key: { to_table: :primitive_types_nodes }
 
       t.timestamps
     end

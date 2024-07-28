@@ -13,5 +13,8 @@ Coordinates::Point.find_or_create_by!(node: first_node, x: 0, y: 0, z: 0)
 second_node = PrimitiveTypes::Node.find_or_create_by!(name: "Second node")
 Coordinates::Point.find_or_create_by!(node: second_node, x: 1000, y: 1000, z: 1000)
 
+PrimitiveTypes::Beam.find_or_create_by(start_node: first_node, end_node: second_node, name: 'Test beam')
+
 Results::Displacement.find_or_create_by(node: first_node, dx: 0, dy: 0, dz: 5000)
 Results::Reaction.find_or_create_by(node: first_node, fx: 0, fy: 0, fz: 10000)
+

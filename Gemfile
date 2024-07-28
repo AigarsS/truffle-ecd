@@ -44,6 +44,8 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem "graphql", "~> 2.3"
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
@@ -53,6 +55,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "graphiql-rails", group: :development
+  gem "annotate", "~> 3.2"
 end
 
 group :test do
@@ -60,6 +65,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
-gem "graphql", "~> 2.3"
-gem "graphiql-rails", group: :development

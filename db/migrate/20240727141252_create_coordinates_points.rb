@@ -4,7 +4,7 @@ class CreateCoordinatesPoints < ActiveRecord::Migration[7.1]
       t.integer :x
       t.integer :y
       t.integer :z
-      t.references :primitive_types_node, null: false, foreign_key: true
+      t.references :node, null: false, foreign_key: { to_table: :primitive_types_nodes }
 
       t.timestamps
     end

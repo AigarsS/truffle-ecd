@@ -7,7 +7,7 @@ class CreateResultsReactions < ActiveRecord::Migration[7.1]
       t.decimal :mx
       t.decimal :my
       t.decimal :mz
-      t.references :primitive_types_node, null: false, foreign_key: true
+      t.references :node, null: false, foreign_key: { to_table: :primitive_types_nodes }
 
       t.timestamps
     end
