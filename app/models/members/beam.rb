@@ -1,4 +1,5 @@
 class Members::Beam < ApplicationRecord
+  has_many :lines, class_name: 'Geometry::Line', dependent: :nullify
 end
 
 # == Schema Information

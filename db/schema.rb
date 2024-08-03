@@ -14,21 +14,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_29_101819) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "coordinates_points", force: :cascade do |t|
-    t.integer "x"
-    t.integer "y"
-    t.integer "z"
-    t.bigint "node_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["node_id"], name: "index_coordinates_points_on_node_id"
-  end
-
   create_table "geometry_lines", force: :cascade do |t|
     t.bigint "start_point_id", null: false
     t.bigint "end_point_id", null: false
+    t.bigint "beam_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["beam_id"], name: "index_geometry_lines_on_beam_id"
     t.index ["end_point_id"], name: "index_geometry_lines_on_end_point_id"
     t.index ["start_point_id"], name: "index_geometry_lines_on_start_point_id"
   end
@@ -55,54 +47,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_29_101819) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "primitive_types_beams", force: :cascade do |t|
-    t.string "name"
-    t.bigint "start_node_id", null: false
-    t.bigint "end_node_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["end_node_id"], name: "index_primitive_types_beams_on_end_node_id"
-    t.index ["start_node_id"], name: "index_primitive_types_beams_on_start_node_id"
-  end
-
-  create_table "primitive_types_nodes", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "results_displacements", force: :cascade do |t|
-    t.decimal "dx"
-    t.decimal "dy"
-    t.decimal "dz"
-    t.decimal "rx"
-    t.decimal "ry"
-    t.decimal "rz"
-    t.bigint "node_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["node_id"], name: "index_results_displacements_on_node_id"
-  end
-
-  create_table "results_reactions", force: :cascade do |t|
-    t.decimal "fx"
-    t.decimal "fy"
-    t.decimal "fz"
-    t.decimal "mx"
-    t.decimal "my"
-    t.decimal "mz"
-    t.bigint "node_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["node_id"], name: "index_results_reactions_on_node_id"
-  end
-
-  add_foreign_key "coordinates_points", "primitive_types_nodes", column: "node_id"
   add_foreign_key "geometry_lines", "geometry_points", column: "end_point_id"
   add_foreign_key "geometry_lines", "geometry_points", column: "start_point_id"
+  add_foreign_key "geometry_lines", "members_beams", column: "beam_id"
   add_foreign_key "geometry_points", "members_nodes", column: "node_id"
-  add_foreign_key "primitive_types_beams", "primitive_types_nodes", column: "end_node_id"
-  add_foreign_key "primitive_types_beams", "primitive_types_nodes", column: "start_node_id"
-  add_foreign_key "results_displacements", "primitive_types_nodes", column: "node_id"
-  add_foreign_key "results_reactions", "primitive_types_nodes", column: "node_id"
 end
